@@ -14,13 +14,13 @@ public class GameTest {
         g = new Game();
     }
 
-//    @Test
-//    public void test_OneThrow_ScoreShouldEqualToPinsInThisThrow() {
-//        g.add(5);
-//
-//        assertEquals(5, g.getScore());
-//        assertEquals(1, g.getCurrentFrame());
-//    }
+    @Test
+    public void test_OneThrow_ScoreShouldEqualToPinsInThisThrow() {
+        g.add(5);
+
+        assertEquals(0, g.getScore()); // First roll in first frame is not summed up.
+        assertEquals(1, g.getCurrentFrame());
+    }
 
     @Test
     public void test_OpenFrame_ScoreShouldBeSumOfTwoRolls() {
