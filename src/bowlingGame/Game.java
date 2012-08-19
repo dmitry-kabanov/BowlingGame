@@ -2,7 +2,7 @@ package bowlingGame;
 
 public class Game {
     private boolean firstRollInFrame = true;
-    private int currentFrame = 0;
+    private int currentFrame = 1;
     private Scorer scorer = new Scorer();
 
     public void add(int pins) {
@@ -13,6 +13,7 @@ public class Game {
     private void adjustCurrentFrame(int pins) {
         if (lastRollInFrame(pins)) {
             advanceFrame();
+            firstRollInFrame = true;
         } else {
             firstRollInFrame = false;
         }
@@ -31,10 +32,21 @@ public class Game {
     }
 
     public int getScore() {
-        return scorer.getScoreForFrame(currentFrame);
+        int frame;
+        if (currentFrame == 10) {
+            frame = 10;
+        }
+        else {
+            frame = currentFrame - 1;
+        }
+        return scorer.getScoreForFrame(frame);
     }
 
     public int getScoreForFrame(int frame) {
         return scorer.getScoreForFrame(frame);
+    }
+
+    public int getCurrentFrame() {
+        return currentFrame;
     }
 }

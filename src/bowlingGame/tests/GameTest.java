@@ -149,4 +149,18 @@ public class GameTest {
 
         assertEquals(270, g.getScore());
     }
+
+    @Test
+    public void testGetCurrentFrame_AfterFirstRollInThirdFrame_ShouldReturnThatCurrentFrameIsThird() {
+        g.add(1);
+        g.add(4);
+
+        g.add(5);
+        g.add(3);
+
+        g.add(2);
+
+        assertEquals(13, g.getScore()); // First roll in third frame is not summed up.
+        assertEquals(3, g.getCurrentFrame());
+    }
 }
